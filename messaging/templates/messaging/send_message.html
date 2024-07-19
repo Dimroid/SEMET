@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Send Message{% endblock %}
+
+{% block content %}
+
+<style>
+    .message-form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .message-form h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .message-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .message-form input[type="text"],
+    .message-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .message-form input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #3b5998;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .message-form input[type="submit"]:hover {
+        background-color: #2d4473;
+    }
+</style>
+
+<div class="message-form-container">
+    <form method="post" class="message-form">
+        {% csrf_token %}
+        <h1>Send a message to {{ recipient.username }}</h1>
+        <label for="id_message">Message:</label>
+        <textarea id="id_message" name="message" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Send Message">
+    </form>
+</div>
+
+{% endblock %}

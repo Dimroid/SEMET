@@ -1,12 +1,91 @@
 <!-- templates/monitoring/add_appliance.html -->
 
-{% extends "dashboard/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-  <h2>Add Appliance</h2>
-  <form method="post">
+  <h2 class="title">Add Appliances</h2>
+  <form method="post" class="appliance-form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add</button>
+    {{ formset.management_form }}
+    <div id="formset-container">
+      {% for form in formset %}
+        <div class="formset-form">
+          {{ form.as_p }}
+        </div>
+      {% endfor %}
+    </div>
+    <button type="submit" class="submit-button">Submit</button>
   </form>
+  <button id="add-more" class="add-button">Add more appliances</button>
+
+  <script>
+    document.getElementById('add-more').addEventListener('click', function(e) {
+      e.preventDefault();
+      var formIdx = document.querySelectorAll('.formset-form').length;
+      var newForm = document.querySelector('.formset-form').cloneNode(true);
+      newForm.innerHTML = newForm.innerHTML.replace(/__prefix__/g, formIdx);
+      document.getElementById('formset-container').appendChild(newForm);
+    });
+  </script>
+  <style>
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #4CAF50;
+  }
+  .appliance-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .formset-form {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  .formset-form p {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .formset-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .formset-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .submit-button,
+  .add-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .submit-button {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .add-button {
+    background-color: #2196F3;
+    color: white;
+  }
+  .submit-button:hover,
+  .add-button:hover {
+    opacity: 0.8;
+  }
+</style>
 {% endblock %}

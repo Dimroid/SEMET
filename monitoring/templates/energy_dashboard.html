@@ -3,12 +3,52 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Energy Dashboard</h2>
-  <p>Total Daily Energy Usage: {{ total_kwh }} kWh</p>
-  <h3>Usage History</h3>
-  <ul>
-    {% for usage in usage_history %}
-      <li>{{ usage.date }}: {{ usage.total_kwh }} kWh</li>
-    {% endfor %}
-  </ul>
+  <div class="energy-dashboard">
+    <h2>Energy Dashboard</h2>
+    <div class="total-energy">
+      Total Daily Energy Usage: <span class="total-kwh">{{ total_kwh }} kWh</span>
+    </div>
+    <h3>Usage History</h3>
+    <ul class="usage-history">
+      {% for usage in usage_history %}
+        <li>{{ usage.date }}: {{ usage.total_kwh }} kWh</li>
+      {% empty %}
+        <li>No usage history available.</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+<style>
+  .energy-dashboard {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+  }
+  .total-energy {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #333;
+  }
+  .total-kwh {
+    font-weight: bold;
+    color: #FF5722;
+  }
+  .usage-history {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  .usage-history li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+  .usage-history li:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
 {% endblock %}

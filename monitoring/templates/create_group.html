@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ group_form.as_p }}
+    {{ formset.management_form }}
+    <div id="formset">
+        {% for form in formset %}
+            {{ form.as_p }}
+        {% endfor %}
+    </div>
+    <button type="button" id="add-more">Add more appliances</button>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById('add-more').addEventListener('click', function() {
+    var form_idx = $('#id_appliance_set-TOTAL_FORMS').val();
+    var new_form = $('#empty-form').html().replace(/__prefix__/g, form_idx);
+    $('#formset').append(new_form);
+    $('#id_appliance_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+});
+</script>
+
+<div id="empty-form" style="display:none">
+    {{ formset.empty_form.as_p }}
+</div>
+
+{% endblock %}

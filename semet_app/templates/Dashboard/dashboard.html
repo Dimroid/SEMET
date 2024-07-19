@@ -698,62 +698,36 @@
         " id="kt_app_header_menu" data-kt-menu="true">        
         <!--begin:Menu item-->
         <div data-kt-menu-trigger="{default: &#39;click&#39;, lg: &#39;hover&#39;}" data-kt-menu-placement="bottom-start"
-            class="menu-item here show menu-lg-down-accordion me-lg-1"><!--begin:Menu link--><span class="menu-link"><span
+            class="menu-item here show menu-lg-down-accordion me-lg-1"><!--begin:Menu link-->
+            <a href="{% url 'dashboard' %}">
+            <span
                     class="menu-title">Dashboards</span><span
                     class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px">
-                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                        href="#"><span
-                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                            class="menu-title">Dashboard</span></a><!--end:Menu link--></div><!--end:Menu item-->
-            </div><!--end:Menu sub-->
+            
         </div><!--end:Menu item--><!--begin:Menu item-->
         <div data-kt-menu-trigger="{default: &#39;click&#39;, lg: &#39;hover&#39;}" data-kt-menu-placement="bottom-start"
-            class="menu-item menu-lg-down-accordion me-lg-1"><!--begin:Menu link--><span class="menu-link"><span
-                    class="menu-title">Account Overview</span><span
-                    class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
+            class="menu-item menu-lg-down-accordion me-lg-1"><!--begin:Menu link-->
+            <a href="{% url 'monitoring:add_appliance' %}" class="menu-link">
+                <span
+                    class="menu-title">Add Appliances</span><span
+                    class="menu-arrow d-lg-none"></span></a><!--end:Menu link--><!--begin:Menu sub-->
             <!--end:Menu sub-->
         </div><!--end:Menu item--><!--begin:Menu item-->
-        <div data-kt-menu-trigger="{default: &#39;click&#39;, lg: &#39;hover&#39;}" data-kt-menu-placement="bottom-start"
-            class="menu-item menu-lg-down-accordion me-lg-1"><!--begin:Menu link--><span class="menu-link"><span
-                    class="menu-title">Auth</span><span
-                    class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 w-lg-600px"><!--begin:Pages menu-->
-<div class="menu-state-bg p-4 p-lg-8">
-    <!--begin:Row-->
-    <div class="row">
-        <!--begin:Col-->
-        <div class="col-lg-4 mb-6 mb-lg-0">
-            <!--begin:Menu section-->
-            <div class="mb-0">
-                <!--begin:Menu heading-->
-                <h4 class="fs-6 fs-lg-4 fw-bold mb-3 ms-4">Login</h4>
-                <!--end:Menu heading-->
-
-                                    <!--begin:Menu item-->
-                    
-                    <!--end:Menu item-->
-                            </div>
-            <!--end:Menu section-->
-        </div>
-        <!--end:Col-->
-
-        <!--begin:Col-->
-
-        <!--end:Col-->
-    </div>
-    <!--end:Row-->
-</div>
-<!--end:Pages menu--></div><!--end:Menu sub--></div><!--end:Menu item--><!--begin:Menu item-->
+                
 <div data-kt-menu-trigger="{default: &#39;click&#39;, lg: &#39;hover&#39;}" data-kt-menu-placement="bottom-start"
-    class="menu-item menu-lg-down-accordion me-lg-1"><!--begin:Menu link--><span class="menu-link"><span
-            class="menu-title">Apps</span><span
-            class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
+    class="menu-item menu-lg-down-accordion me-lg-1"><!--begin:Menu link-->
+        <a href="{% url 'monitoring:energy_dashboard' %}" class="menu-link">
+        
+        <span
+            class="menu-title">Energy-Dashboard</span><span
+            class="menu-arrow d-lg-none"></span></a></span><!--end:Menu link--><!--begin:Menu sub-->
     
 </div><!--end:Menu item--><!--begin:Menu item-->
 <div data-kt-menu-trigger="{default: &#39;click&#39;, lg: &#39;hover&#39;}" data-kt-menu-placement="bottom-start"
-    class="menu-item menu-lg-down-accordion me-lg-1"><!--begin:Menu link--><span class="menu-link"><span
-            class="menu-title">Resources</span><span
+    class="menu-item menu-lg-down-accordion me-lg-1"><!--begin:Menu link-->
+    <a href="{% url 'user_search' %}" class="sidebar-link {% if section == 'profile_search' %} selected_now {% endif %} "> 
+    <span class="menu-link"><span
+            class="menu-title">messaging community</span><span
             class="menu-arrow d-lg-none"></span></span><!--end:Menu link--><!--begin:Menu sub-->
     <!--end:Menu sub-->
 </div><!--end:Menu item--> </div>
@@ -1795,20 +1769,10 @@
     <div class="menu-item px-3">
         <div class="menu-content d-flex align-items-center px-3">
             <!--begin::Avatar-->
-            <div class="symbol symbol-50px me-5">
-                <img alt="Logo" src="{% static 'Dash_Home/300-3.jpg' %}">
-            </div>
             <!--end::Avatar-->
 
             <!--begin::Username-->
-            <div class="d-flex flex-column">
-                <div class="fw-bold d-flex align-items-center fs-5">
-                    Johnson                    <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span>
-                </div>
-
-                <a href="https://preview.keenthemes.com/blaze-html-pro/#" class="fw-semibold text-muted text-hover-primary fs-7">
-                    React Developer                </a>
-            </div>
+            
             <!--end::Username-->
         </div>
     </div>
@@ -1818,97 +1782,9 @@
     <div class="separator my-2"></div>
     <!--end::Menu separator-->
 
-    <!--begin::Menu item-->
-    <div class="menu-item px-5">
-        <a href="https://preview.keenthemes.com/blaze-html-pro/account/overview.html" class="menu-link px-5">
-            My Profile
-        </a>
-    </div>
-    <!--end::Menu item-->
     
-    <!--begin::Menu item-->
-    <div class="menu-item px-5">
-        <a href="https://preview.keenthemes.com/blaze-html-pro/apps/projects/list.html" class="menu-link px-5">
-            <span class="menu-text">My Projects</span>
-            <span class="menu-badge">
-                <span class="badge badge-light-danger badge-circle fw-bold fs-7">3</span>
-            </span>
-        </a>
-    </div>
-    <!--end::Menu item-->
 
-    <!--begin::Menu item-->
-    <div class="menu-item px-5" data-kt-menu-trigger="{default: &#39;click&#39;, lg: &#39;hover&#39;}" data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-        <a href="https://preview.keenthemes.com/blaze-html-pro/#" class="menu-link px-5">
-            <span class="menu-title">My Subscription</span>
-            <span class="menu-arrow"></span>
-        </a>
-
-        <!--begin::Menu sub-->
-        <div class="menu-sub menu-sub-dropdown w-175px py-4">
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a href="https://preview.keenthemes.com/blaze-html-pro/account/referrals.html" class="menu-link px-5">
-                    Referrals
-                </a>
-            </div>
-            <!--end::Menu item-->
-
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a href="https://preview.keenthemes.com/blaze-html-pro/account/billing.html" class="menu-link px-5">
-                    Billing
-                </a>
-            </div>
-            <!--end::Menu item-->
-
-            <!--begin::Menu item-->            
-            <div class="menu-item px-3">
-                <a href="https://preview.keenthemes.com/blaze-html-pro/account/statements.html" class="menu-link px-5">
-                    Payments
-                </a>
-            </div>
-            <!--end::Menu item-->
-
-            <!--begin::Menu item-->            
-            <div class="menu-item px-3">
-                <a href="https://preview.keenthemes.com/blaze-html-pro/account/statements.html" class="menu-link d-flex flex-stack px-5">
-                    Statements
-
-                    <span class="ms-2 lh-0" data-bs-toggle="tooltip" aria-label="View your statements" data-bs-original-title="View your statements" data-kt-initialized="1">
-                        <i class="ki-duotone ki-information-5 fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>                    </span>
-                </a>
-            </div>
-            <!--end::Menu item-->
-            
-            <!--begin::Menu separator-->
-            <div class="separator my-2"></div>
-            <!--end::Menu separator-->
-
-            <!--begin::Menu item-->            
-            <div class="menu-item px-3">
-                <div class="menu-content px-3">
-                    <label class="form-check form-switch form-check-custom form-check-solid">
-                        <input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications">
-                        <span class="form-check-label text-muted fs-7">
-                            Notifications
-                        </span>
-                    </label>
-                </div>
-            </div>
-            <!--end::Menu item-->
-        </div>
-        <!--end::Menu sub-->
-    </div>
-    <!--end::Menu item-->
-
-    <!--begin::Menu item-->
-    <div class="menu-item px-5">
-        <a href="https://preview.keenthemes.com/blaze-html-pro/account/statements.html" class="menu-link px-5">
-            My Statements
-        </a>
-    </div>
-    <!--end::Menu item-->
+   
 
     <!--begin::Menu separator-->
     <div class="separator my-2"></div>
@@ -1968,93 +1844,15 @@
         </div>
         <!--end::Menu item-->
     
-    <!--begin::Menu item-->
-    <div class="menu-item px-5" data-kt-menu-trigger="{default: &#39;click&#39;, lg: &#39;hover&#39;}" data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
-        <a href="https://preview.keenthemes.com/blaze-html-pro/#" class="menu-link px-5">
-            <span class="menu-title position-relative">
-                Language 
-
-                <span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">
-                    English <img class="w-15px h-15px rounded-1 ms-2" src="{% static 'Dash_Home/united-states.svg' %}" alt="">
-                </span>
-            </span>
-        </a>
-
-        <!--begin::Menu sub-->
-        <div class="menu-sub menu-sub-dropdown w-175px py-4">
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a href="https://preview.keenthemes.com/blaze-html-pro/account/settings.html" class="menu-link d-flex px-5 active">
-                    <span class="symbol symbol-20px me-4">
-                        <img class="rounded-1" src="{% static 'Dash_Home/united-states.svg' %}" alt="">
-                    </span>
-                    English
-                </a>
-            </div>
-            <!--end::Menu item-->
-
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a href="https://preview.keenthemes.com/blaze-html-pro/account/settings.html" class="menu-link d-flex px-5">
-                    <span class="symbol symbol-20px me-4">
-                        <img class="rounded-1" src="{% static 'Dash_Home/spain.svg' %}" alt="">
-                    </span>
-                    Spanish
-                </a>
-            </div>
-            <!--end::Menu item-->
-
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a href="https://preview.keenthemes.com/blaze-html-pro/account/settings.html" class="menu-link d-flex px-5">
-                    <span class="symbol symbol-20px me-4">
-                        <img class="rounded-1" src="{% static 'Dash_Home/germany.svg' %}" alt="">
-                    </span>
-                    German
-                </a>
-            </div>
-            <!--end::Menu item-->
-
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a href="https://preview.keenthemes.com/blaze-html-pro/account/settings.html" class="menu-link d-flex px-5">
-                    <span class="symbol symbol-20px me-4">
-                        <img class="rounded-1" src="{% static 'Dash_Home/japan.svg' %}" alt="">
-                    </span>
-                    Japanese
-                </a>
-            </div>
-            <!--end::Menu item-->
-
-            <!--begin::Menu item-->
-            <div class="menu-item px-3">
-                <a href="https://preview.keenthemes.com/blaze-html-pro/account/settings.html" class="menu-link d-flex px-5">
-                    <span class="symbol symbol-20px me-4">
-                        <img class="rounded-1" src="{% static 'Dash_Home/france.svg' %}" alt="">
-                    </span>
-                    French
-                </a>
-            </div>
-            <!--end::Menu item-->
-        </div>
-        <!--end::Menu sub-->
-    </div>
-    <!--end::Menu item-->
-
-    <!--begin::Menu item-->
-    <div class="menu-item px-5 my-1">
-        <a href="https://preview.keenthemes.com/blaze-html-pro/account/settings.html" class="menu-link px-5">
-            Account Settings
-        </a>
-    </div>
-    <!--end::Menu item-->
-
+   
+    
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-        <a href="https://preview.keenthemes.com/blaze-html-pro/authentication/sign-in/basic.html" class="menu-link px-5">
+        <a href="{% url 'logout' %}" class="menu-link px-5">
             Sign Out
         </a>
     </div>
+    
     <!--end::Menu item-->
 </div>
             

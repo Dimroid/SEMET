@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<style>
+    .profile-container {
+        max-width: 600px;
+        margin: 30vh auto;
+        padding: 30px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #ffffff;
+        text-align: center;
+        display: flex;  
+        align-items: center; 
+        justify-content: center; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .profile-container:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-right: 20px;
+        object-fit: cover;
+    }
+
+    .profile-details {
+        flex: 1;
+        text-align: left;
+    }
+
+    .profile-name {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .profile-bio {
+        margin-bottom: 20px;
+        color: #666;
+        font-size: 16px;
+    }
+
+    .send-message-link {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3b5998;
+        color: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .send-message-link:hover {
+        background-color: #2a4277;
+    }
+
+    .default-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+</style>
+
+<div class="profile-container">
+    {% if user.profile.photo %}
+        <img src="{{ user.profile.photo.url }}" class="profile-photo" alt="Profile Picture">
+    {% else %}
+        <img src="{% static 'Dash_Home/account.png' %}" alt="Default Profile Picture" class="profile-photo default-picture">
+    {% endif %}
+    <div class="profile-details">
+        <h1 class="profile-name">{{ user.first_name }} {{ user.last_name }}</h1>
+        <br>
+        {% if user.profile.bio %}
+            <p class="profile-bio">{{ user.profile.bio }}</p>
+        {% else %}
+            <p class="profile-bio">No bio available.</p>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'messaging:send_message' username=user.username %}" class="send-message-link">Send Message</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

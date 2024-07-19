@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Message{% endblock %}
+
+{% block content %}
+
+<h1>Chat history with {{ recipient.username }}</h1>
+<div class="chat-history">
+    {% for message in messages %}
+        <div class="message">
+            <p><strong>{{ message.sender.username }}:</strong> {{ message.message }}</p>
+            <p><em>{{ message.timestamp }}</em></p>
+        </div>
+    {% endfor %}
+</div>
+<form method="post" action="{% url 'messaging:send_message' recipient.username %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <!-- <button type="submit">Send</button> -->
+</form>
+{% endblock %}

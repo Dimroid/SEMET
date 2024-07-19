@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+<style>
+    .form-container {
+        margin-left: 10px;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid #6c8ece;
+        background-color: rgb(242, 236, 252);
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .form-container label {
+        flex: 0 0 auto;
+    }
+
+    .form-container input {
+        flex: 1 1 auto;
+        min-width: 100px;
+        margin-right: 10px;
+        box-sizing: border-box;
+    }
+
+    .form-container button {
+        flex: 0 0 auto;
+        /* padding: 10px 20px; */
+        box-sizing: border-box;
+    }
+
+    
+</style>
+
+<form method="post" class="form-container">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    {{ form.username }}
+    <button type="submit">Search</button>
+</form>
+
+{% endblock %}

@@ -6,6 +6,7 @@ from django.conf.urls import handler404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('messaging.urls')),
     path('', include('monitoring.urls')),
     path('', include('semet_app.urls')),
 ]

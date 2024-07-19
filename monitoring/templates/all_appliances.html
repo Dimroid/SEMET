@@ -1,0 +1,79 @@
+<!-- monitoring/templates/all_appliances.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    <style>
+        .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.appliance-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.appliance-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.appliance-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.appliance-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.appliance-info {
+  color: #555;
+}
+
+.total-energy {
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.total-kwh {
+  font-weight: bold;
+  color: #FF5722;
+}
+    </style>
+
+  <div class="container">
+    <h2 class="title">All Appliances</h2>
+    <ul class="appliance-list">
+      {% for appliance in appliances %}
+        <li class="appliance-item">
+          <div class="appliance-details">
+            <span class="appliance-name">{{ appliance.name }}</span>
+            <span class="appliance-info">{{ appliance.wattage }}W - {{ appliance.hours_per_day }} hours/day - {{ appliance.daily_kwh }} kWh/day</span>
+          </div>
+        </li>
+      {% empty %}
+        <li>No appliances added yet.</li>
+      {% endfor %}
+    </ul>
+    <h3 class="total-energy">Total Energy Usage: <span class="total-kwh">{{ total_kwh }} kWh/day</span></h3>
+  </div>
+{% endblock %}

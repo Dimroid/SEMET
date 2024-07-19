@@ -180,7 +180,7 @@ def dashboard(request):
 class LogoutView(LogoutView):
     def get(self, request):
         logouts = logout(request)
-        return render(request, 'Home/logged_out.html', {'logout':logout})
+        return render(request, 'registration/logged_out.html', {'logout':logout})
         # return redirect('login')
         
 

@@ -1,13 +1,70 @@
-<!-- templates/monitoring/appliance_list.html -->
-
-{% extends "dashboard/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-  <h2>My Appliances</h2>
-  <ul>
+  <h2 class="title">Your Appliances</h2>
+  <ul class="appliance-list">
     {% for appliance in appliances %}
-      <li>{{ appliance.name }}: {{ appliance.daily_kwh }} kWh/day</li>
+      <li class="appliance-item">
+        <span class="appliance-name">{{ appliance.name }}</span>
+        <span class="appliance-details">{{ appliance.wattage }}W - {{ appliance.hours_per_day }} hours/day - {{ appliance.daily_kwh }} kWh/day</span>
+      </li>
+    {% empty %}
+      <li>No appliances added yet.</li>
     {% endfor %}
   </ul>
-  <a href="{% url 'monitoring:add_appliance' %}">Add a new appliance</a>
+  
+  <div class="view-all-link">
+    <a href="{% url 'monitoring:all_appliances' %}">View all appliances</a>
+  </div>
+  
+  <h3 class="total-energy">Total Energy Usage: <span class="total-kwh">{{ total_kwh }} kWh/day</span></h3>
+
+<style>
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #4CAF50;
+  }
+  .appliance-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .appliance-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  .appliance-item:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  .appliance-name {
+    font-weight: bold;
+    color: #333;
+  }
+  .appliance-details {
+    color: #555;
+  }
+  .total-energy {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #333;
+  }
+  .total-kwh {
+    font-weight: bold;
+    color: #FF5722;
+  }
+  .view-all-link {
+    text-align: center;
+    margin-top: 10px;
+  }
+  .view-all-link a {
+    color: #007bff;
+    text-decoration: underline;
+  }
+</style>
 {% endblock %}

@@ -23,7 +23,6 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1',
     'http://localhost',
     'https://0951-129-205-124-222.ngrok-free.app',
-    '*',
 ]
 
 LOGIN_REDIRECT_URL = 'dashboard'
@@ -32,6 +31,7 @@ LOGIN_REDIRECT_URL = 'dashboard'
 # Application definition
 
 INSTALLED_APPS = [
+    'messaging',
     'monitoring',
     'semet_app',
     'django.contrib.admin',
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'semet.urls'
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'semet.wsgi.application'
+# WSGI_APPLICATION = 'semet.wsgi.application'
 
 
 # Database
