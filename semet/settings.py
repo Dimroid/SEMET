@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
- WSGI_APPLICATION = 'semet.wsgi.application'
+WSGI_APPLICATION = 'semet.wsgi.application'
 
 
 # Database
